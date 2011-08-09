@@ -1,6 +1,10 @@
 package org.littleshoot.proxy;
 
 
+import com.rivetgames.DebugRequestFilter;
+
+import java.util.HashMap;
+
 /**
  * Launches a new HTTP proxy.
  */
@@ -26,7 +30,7 @@ public class Launcher {
         }
         
         System.out.println("About to start server on port: "+port);
-        final HttpProxyServer server = new DefaultHttpProxyServer(port);
+        final HttpProxyServer server = new DefaultHttpProxyServer(port, new DebugRequestFilter(), new HashMap<String, HttpFilter>());
         System.out.println("About to start...");
         server.start();
     }
